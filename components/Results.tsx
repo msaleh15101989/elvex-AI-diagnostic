@@ -31,7 +31,7 @@ export const Results: React.FC<Props> = ({ contact: c, results: r, delivered, re
       <header className="cover-bg">
         <div className="wrap pt-12 pb-10 sm:pt-16 grid lg:grid-cols-[1.4fr,1fr] gap-10 items-center">
           <div>
-            <p className="kicker">AI Future Fit results</p>
+            <p className="kicker">AI Readiness results</p>
             <h1 className="display mt-3 text-[clamp(2.2rem,5.5vw,3.8rem)]">{c.fullName}</h1>
             <p className="mt-4 text-[var(--lav)]">{c.role}, {c.company}</p>
             <p className="mt-1 text-sm text-[var(--muted)]">{today}. Reference {reference}</p>

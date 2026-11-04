@@ -45,7 +45,7 @@ export function buildReportHtml(c: Contact, r: Results, reference: string) {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:680px;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;border:1px solid ${LINE};border-radius:12px;overflow:hidden">
   <tr><td style="padding:28px;background:#07070A;background-image:linear-gradient(135deg,#07070A 0%,#140B2A 100%)">
     <p style="margin:0 0 18px;font-size:15px;font-weight:bold;color:#F4F6FF">ELVEX Partners</p>
-    <p style="margin:0 0 6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;color:#A97BFF">AI Future Fit report</p>
+    <p style="margin:0 0 6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;color:#A97BFF">AI Readiness report</p>
     <h1 style="margin:0 0 6px;font-family:Montserrat,Arial,sans-serif;font-size:26px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#F4F6FF">${esc(c.fullName)}</h1>
     <p style="margin:0 0 20px;font-size:13px;color:#D5D7E2">${esc(c.role)}, ${esc(c.company)}. ${esc(c.industry)}, ${esc(c.country)}. ${date}. Ref ${esc(reference)}</p>
     <table role="presentation" cellpadding="0" cellspacing="0"><tr>

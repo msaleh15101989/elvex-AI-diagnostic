@@ -19,7 +19,7 @@ export function buildPayload(state: SavedState, r: Results) {
   const [firstName, ...rest] = c.fullName.trim().split(/\s+/);
 
   return {
-    source: 'ELVEX AI Future Fit',
+    source: 'ELVEX AI Future Fit', // internal routing key in Make; the tool is shown as ELVEX AI Readiness
     submissionId: state.submissionId,
     submittedAt: new Date().toISOString(),
     fullName: c.fullName.trim(),

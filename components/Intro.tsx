@@ -11,7 +11,7 @@ export const Intro: React.FC<{ resume: boolean; total: number; onStart: () => vo
     <section className="cover-bg">
       <div className="wrap pt-14 pb-10 sm:pt-20 lg:pt-24 grid lg:grid-cols-[1.35fr,1fr] gap-12 lg:gap-16 items-center">
         <div>
-          <p className="kicker">ELVEX AI Future Fit</p>
+          <p className="kicker">ELVEX AI Readiness</p>
           <h1 className="display mt-4 text-[clamp(2.5rem,6vw,4.4rem)]">Where will you add value as AI changes your work?</h1>
           <p className="lede mt-6">Find your contribution style and how ready you, and your organization, are for AI. Your personal report arrives by email with three moves to make in the next 30 days.</p>
           <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">

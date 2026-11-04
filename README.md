@@ -1,4 +1,4 @@
-# ELVEX AI Future Fit
+# ELVEX AI Readiness
 
 A seven minute lead generation assessment for elvexpartners.com.
 
