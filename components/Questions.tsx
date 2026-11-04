@@ -44,8 +44,8 @@ export const Questions: React.FC<Props> = ({ step, answers, onAnswer, onGoTo, on
     : `Part 2, AI readiness (${LAYERS[section.layer].title}). Section ${step + 1} of ${SECTIONS.length}`;
 
   return (
-    <section className="wrap py-10 sm:py-14 grid lg:grid-cols-[260px,1fr] gap-8 lg:gap-14 items-start">
-      <aside className="lg:sticky lg:top-28" aria-label="Sections">
+    <section className="wrap py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-[260px,1fr] gap-8 lg:gap-14 items-start">
+      <aside className="min-w-0 lg:sticky lg:top-28" aria-label="Sections">
         <div className="flex items-baseline justify-between">
           <span className="text-sm text-[var(--lav)]">Your progress</span>
           <span className="num text-sm text-[var(--muted)]">{done} of {total}</span>
