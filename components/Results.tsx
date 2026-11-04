@@ -56,7 +56,7 @@ export const Results: React.FC<Props> = ({ contact: c, results: r, delivered, re
               <div><p className="kicker">Your contribution style</p><h2 className="display text-[clamp(1.6rem,3vw,2.2rem)] mt-1">{primary.name}</h2></div>
             </div>
             <p className="mt-5 text-[var(--lav)] text-lg leading-relaxed">{primary.description}</p>
-            <p className="mt-4 text-[var(--body)]">Second strongest: <b className="text-[var(--text)]">{STYLES[r.secondary.key].name}</b></p>
+            <p className="mt-4 text-[var(--body)]">{r.tiedTop ? 'Equally strong: ' : 'Second strongest: '}<b className="text-[var(--text)]">{STYLES[r.secondary.key].name}</b></p>
           </div>
           <div className="panel p-7 sm:p-8">
             <p className="text-sm font-semibold text-[var(--text)]">Your style mix</p>

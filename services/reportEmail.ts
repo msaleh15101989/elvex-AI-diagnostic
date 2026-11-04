@@ -55,7 +55,7 @@ export function buildReportHtml(c: Contact, r: Results, reference: string) {
         <p style="margin:8px 0 0;font-size:14px;color:#F4F6FF;line-height:1.5">${esc(r.band.summary)}</p></td></tr></table>
   </td></tr>
   ${section(`${label('Your contribution style')}${h2(primary.name)}
-    ${p(`${esc(primary.description)} Your second strongest style is <b style="color:${INK}">${secondary.name}</b>: ${esc(secondary.short.toLowerCase())}.`)}
+    ${p(`${esc(primary.description)} ${r.tiedTop ? 'You are equally strong as' : 'Your second strongest style is'} <b style="color:${INK}">${secondary.name}</b>: ${esc(secondary.short.toLowerCase())}.`)}
     <div style="padding:14px;background:${SOFT};border-radius:10px;margin:0 0 14px">${label('Where AI gives you an edge')}<p style="margin:0;font-size:14px;color:${INK};line-height:1.55">${esc(primary.aiEdge)}</p></div>
     <div style="padding:14px;border:1px solid ${LINE};border-radius:10px;margin:0 0 16px">${label('Watch out for')}<p style="margin:0;font-size:14px;color:${INK};line-height:1.55">${esc(primary.watchOut)}</p></div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">${styleRows}</table>`)}

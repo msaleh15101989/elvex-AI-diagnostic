@@ -13,14 +13,21 @@ const BANDS = [
 export function computeResults(answers: Answers): Results {
   // Contribution style: count how often each style was chosen.
   const counts: Record<StyleKey, number> = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+  // Tie-breakers: answers in "You and AI" count first, then "What drives you".
+  const aiCounts: Record<StyleKey, number> = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+  const driveCounts: Record<StyleKey, number> = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
   let choiceTotal = 0;
   SECTIONS.forEach(s => { if (s.kind === 'choice') s.questions.forEach(q => {
     const a = answers[q.id];
-    if (typeof a === 'string' && a in counts) { counts[a as StyleKey]++; choiceTotal++; }
+    if (typeof a === 'string' && a in counts) {
+      counts[a as StyleKey]++; choiceTotal++;
+      if (s.key === 'ai') aiCounts[a as StyleKey]++;
+      if (s.key === 'drives') driveCounts[a as StyleKey]++;
+    }
   }); });
   const styles: StyleScore[] = (Object.keys(counts) as StyleKey[])
     .map(k => ({ key: k, name: STYLES[k].name, count: counts[k], share: choiceTotal ? Math.round(counts[k] / choiceTotal * 100) : 0 }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a, b) => b.count - a.count || aiCounts[b.key] - aiCounts[a.key] || driveCounts[b.key] - driveCounts[a.key]);
 
   // AI readiness: scale answers, "not sure" (0) is left out.
   const scaleItems: (ScaleQuestion & { layer: LayerKey })[] = SECTIONS.flatMap(s => s.kind === 'scale' ? s.questions.map(q => ({ ...q, layer: s.layer })) : []);
@@ -30,6 +37,7 @@ export function computeResults(answers: Answers): Results {
     scaleItems.filter(filter).map(q => answers[q.id]).filter((v): v is number => typeof v === 'number' && v > 0);
 
   const layers = Object.fromEntries((Object.keys(LAYERS) as LayerKey[]).map(k => [k, idx(val(q => q.layer === k))])) as Record<LayerKey, number | null>;
+  const rated = val(() => true).length;
   const readiness = idx(val(() => true)) ?? 0;
   const personal = idx(val(q => q.scope === 'personal'));
   const organization = idx(val(q => q.scope === 'organization'));
@@ -46,7 +54,11 @@ export function computeResults(answers: Answers): Results {
   const sorted = [...scored].sort((a, b) => a.value - b.value);
   return {
     readiness,
-    band: BANDS.find(b => readiness >= b.min)!,
+    // Fewer than half the statements rated: say so rather than show a misleading low score.
+    band: rated < Math.ceil(scaleItems.length / 2)
+      ? { name: 'Unclear', summary: 'You answered “not sure” to most statements, so this score is only a rough guide. That uncertainty is itself a useful finding.' }
+      : BANDS.find(b => readiness >= b.min)!,
+    rated, tiedTop: styles[0].count === styles[1].count,
     layers, personal, organization, weakestLayer, pattern,
     styles, primary: styles[0], secondary: styles[1],
     gaps: sorted.filter(s => s.value <= 3).slice(0, 3),

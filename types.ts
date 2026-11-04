@@ -53,6 +53,8 @@ export interface Results {
   styles: StyleScore[];
   primary: StyleScore;
   secondary: StyleScore;
+  tiedTop: boolean;     // primary and secondary chosen equally often
+  rated: number;        // scale statements actually rated (not "not sure")
   gaps: ItemScore[];
   strengths: ItemScore[];
 }
