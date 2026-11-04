@@ -1,8 +1,8 @@
 import { LayerKey, Section, StyleKey } from './types';
 
-// Make webhook for the "ELVEX AI Future Fit Intake" scenario. It handles new submissions,
-// report resends and debrief requests (told apart by the resend and debriefRequested flags).
-export const INTAKE_WEBHOOK = 'https://hook.us2.make.com/6htqqqe1dgei3abgvgirx8g4kjfr49ih';
+// Shared Make webhook, scenario "ELVEX Diagnostics Intake". It routes on source = "ELVEX AI Future Fit",
+// then on the resend and debriefRequested flags (new lead, report resend, call request).
+export const INTAKE_WEBHOOK = 'https://hook.us2.make.com/qreddyfw8kcs3xsy1ksoqiwhiuamtj0h';
 
 export const LAYERS: Record<LayerKey, { title: string; tagline: string; question: string }> = {
   elevate: { title: 'Elevate', tagline: 'Direction', question: 'Do you know where AI is taking your work?' },

@@ -9,7 +9,7 @@ A seven minute lead generation assessment for elvexpartners.com.
 4. Shows headline results on screen. The full report is emailed, so every result comes with a real contact.
 
 ## Data flow
-Everything goes to one Make webhook (`INTAKE_WEBHOOK` in `constants.tsx`), scenario "ELVEX AI Future Fit Intake":
+Everything goes to one Make webhook (`INTAKE_WEBHOOK` in `constants.tsx`), scenario "ELVEX Diagnostics Intake", shared with the Executive Diagnostic and routed by `source`:
 - new submission: ELVEX gets a lead email with contact details, scores, the report and every answer; the respondent gets their report by email
 - `resend: true`: only the respondent's report is sent again (corrected email address)
 - `debriefRequested: true`: ELVEX gets a "call requested" email
